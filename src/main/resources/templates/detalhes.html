@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset='utf-8'>    
+    <title>Detalhes da Musica</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">          
+</head>
+<body>
+   <header>
+       <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1" style="font-weight: bold;">
+        <a href="/musicas"> Catalogo de Músicas </a></span>
+    </nav>
+   </header> 
+
+   <main>
+    <div class="container" style="width: 60%; padding-bottom: 30px;">
+        <article>        
+            <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${musica.titulo}" ></span> </h1>            
+            <p><a th:href="${(#mvc.url('CC#getEditarMusica').arg(0, musica.id)).build()}" class="btn btn-primary" role="button">Editar música</a>
+            <a th:href="${(#mvc.url('CC#getExcluirMusicas').arg(0, musica.id)).build()}" class="btn btn-outline-danger" role="button">Excluir música</a>  </p>
+                <p class="card-subtitle mb-2 text-muted">
+                    <p><strong>Autor</strong>
+                    <span th:text="${musica.autor}"></span><br>
+                    <strong>Data </strong>
+                    <span th:text="${musica.data}"></span></p>                       
+                </p>           
+                <section>
+                    <p class="card-text" style="margin-top: 40px;">
+                    <span th:utext="${musica.letra}"></span></p>
+                </section>
+                                             
+        </article>
+    </div>    
+</main>   
+
+</body>
+</html>
